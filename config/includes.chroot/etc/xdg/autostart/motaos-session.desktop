@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Preferências iniciais do MotaOS
+Exec=motaos-session
+OnlyShowIn=XFCE;
+NoDisplay=true

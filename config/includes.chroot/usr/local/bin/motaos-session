@@ -1,0 +1,17 @@
+#!/bin/bash
+set -Eeuo pipefail
+state="${XDG_CONFIG_HOME:-$HOME/.config}/motaos"
+mkdir -p "$state"
+[[ ! -e $state/initialized-v1 ]] || exit 0
+# Wait for xfdesktop to create monitor-specific properties before setting the wallpaper.
+for ((attempt=0; attempt<30; attempt++)); do
+  properties=$(xfconf-query -c xfce4-desktop -l 2>/dev/null || true)
+  if grep -q '/last-image$' <<< "$properties"; then break; fi
+  sleep 1
+done
+while IFS= read -r property; do
+  [[ $property == */last-image ]] || continue
+  xfconf-query -c xfce4-desktop -p "$property" -s /usr/share/backgrounds/motaos/orbit.svg
+done <<< "$properties"
+grep -q '/last-image$' <<< "$properties" || exit 0
+touch "$state/initialized-v1"

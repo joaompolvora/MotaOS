@@ -1,0 +1,5 @@
+button-title=MotaOS
+button-icon=distributor-logo
+show-button-title=true
+show-button-icon=true
+favorites=firefox-esr.desktop,org.kde.kolourpaint.desktop,thunar.desktop,xfce4-terminal.desktop,motaos-install.desktop

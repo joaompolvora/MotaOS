@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440">
+<defs><radialGradient id="halo"><stop stop-color="#7e22ce" stop-opacity=".25"/><stop offset="1" stop-color="#0a0a0a" stop-opacity="0"/></radialGradient><linearGradient id="edge"><stop stop-color="#c084fc"/><stop offset="1" stop-color="#7e22ce" stop-opacity=".1"/></linearGradient></defs>
+<rect width="2560" height="1440" fill="#0a0a0a"/>
+<ellipse cx="1730" cy="620" rx="920" ry="760" fill="url(#halo)"/>
+<g fill="none" stroke="url(#edge)" transform="rotate(-26 1770 720)"><ellipse cx="1770" cy="720" rx="640" ry="350" stroke-width="2"/><ellipse cx="1770" cy="720" rx="570" ry="290" opacity=".45"/><ellipse cx="1770" cy="720" rx="710" ry="410" opacity=".18"/></g>
+<path d="M280 650V530l60 70 60-70v120" fill="none" stroke="#a855f7" stroke-width="12" stroke-linejoin="round"/>
+<text x="270" y="755" font-family="sans-serif" font-size="76" letter-spacing="-2" fill="#f5f5f5">MotaOS</text>
+<text x="275" y="805" font-family="sans-serif" font-size="22" letter-spacing="5" fill="#a1a1aa">SEU ESPAÇO. SUAS IDEIAS.</text>
+</svg>

@@ -1,0 +1,27 @@
+---
+componentName: motaos
+welcomeStyleCalamares: true
+windowExpanding: normal
+windowSize: 900px,620px
+windowPlacement: center
+strings:
+  productName: MotaOS
+  shortProductName: MotaOS
+  version: '0.1'
+  shortVersion: '0.1'
+  versionedName: MotaOS 0.1
+  shortVersionedName: MotaOS 0.1
+  bootloaderEntryName: MotaOS
+  productUrl: https://www.debian.org/
+  supportUrl: https://www.debian.org/support
+  knownIssuesUrl: https://www.debian.org/releases/trixie/
+  releaseNotesUrl: https://www.debian.org/releases/trixie/
+images:
+  productLogo: logo.svg
+  productIcon: logo.svg
+  productWelcome: logo.svg
+style:
+  SidebarBackground: '#0a0a0a'
+  SidebarText: '#eeeeee'
+  SidebarTextCurrent: '#ffffff'
+  SidebarBackgroundCurrent: '#7e22ce'

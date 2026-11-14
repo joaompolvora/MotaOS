@@ -1,0 +1,7 @@
+[Configuration]
+FontName=JetBrains Mono 11
+ColorForeground=#eeeeee
+ColorBackground=#0a0a0a
+ColorCursor=#a855f7
+ColorSelection=#7e22ce
+MiscMenubarDefault=FALSE

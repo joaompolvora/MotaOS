@@ -1,0 +1,33 @@
+#!/bin/bash
+set -Eeuo pipefail
+chmod 0755 /usr/local/bin/motaos-* /usr/local/sbin/motaos-target-cleanup
+chmod 0644 /etc/xdg/autostart/motaos-session.desktop
+echo 'pt_BR.UTF-8 UTF-8' >> /etc/locale.gen
+locale-gen
+update-locale LANG=pt_BR.UTF-8
+ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+echo America/Sao_Paulo > /etc/timezone
+systemctl enable NetworkManager lightdm systemd-timesyncd
+systemctl mask ssh.service ssh.socket
+# Keep Debian identity for package scripts; expose the derivative in presentation fields.
+sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="MotaOS 0.1 (Debian 13 trixie)"/; s/^NAME=.*/NAME="MotaOS"/' /etc/os-release
+mkdir -p /usr/share/motaos
+dpkg-query -W -f='${binary:Package}\t${Version}\n' > /usr/share/motaos/package-versions.tsv
+# Preserve the Debian installer job sequence and validate assumptions before editing.
+python3 - <<'PY'
+from pathlib import Path
+import yaml
+path = Path('/etc/calamares/settings.conf')
+config = yaml.safe_load(path.read_text())
+jobs = next(step['exec'] for step in config['sequence'] if 'exec' in step)
+for job in ('unpackfs', 'users', 'bootloader-config', 'bootloader', 'sources-final', 'umount'):
+    assert job in jobs, f'Debian installer contract changed: {job}'
+jobs.insert(jobs.index('umount'), 'shellprocess@motaos-cleanup')
+config['instances'] = config.get('instances', []) + [
+    {'id': 'motaos-cleanup', 'module': 'shellprocess', 'config': 'motaos-cleanup.conf'}]
+config['branding'] = 'motaos'
+config['prompt-install'] = True
+path.write_text(yaml.safe_dump(config, sort_keys=False))
+PY
+test -r /etc/calamares/modules/unpackfs.conf
+test -x /usr/bin/calamares-install-debian

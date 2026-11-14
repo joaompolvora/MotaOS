@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+if [ ! -f /run/live/medium/live/filesystem.squashfs ]; then
+  zenity --info --text='O instalador está disponível somente na sessão live.'
+  exit 1
+fi
+exec /usr/bin/calamares-install-debian

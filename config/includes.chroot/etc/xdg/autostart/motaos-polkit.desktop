@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Autorização administrativa
+Exec=lxpolkit
+OnlyShowIn=XFCE;
+NoDisplay=true

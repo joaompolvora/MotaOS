@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Instalar MotaOS
+Comment=Instalar o MotaOS no disco virtual
+Exec=motaos-install
+Icon=system-software-install
+Terminal=false
+Categories=System;
